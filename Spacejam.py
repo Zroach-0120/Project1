@@ -1,5 +1,7 @@
 from direct.showbase.ShowBase import ShowBase
 import math, sys, random
+import os
+
 
 
 class MyApp(ShowBase):
@@ -75,14 +77,17 @@ class MyApp(ShowBase):
 
 
         #Space Station
-        self.SpaceStation = self.loader.loadModel('Assets/Space Station/spaceStation.x')  # Placeholder path
+        self.SpaceStation = self.loader.loadModel('Assets/SpaceStation/spaceStation.x')  # Placeholder path
         self.SpaceStation.reparentTo(self.render)
         self.SpaceStation.setPos(500, 4000, 100)  # Adjust position as needed
         self.SpaceStation.setScale(100)
 
-        station_tex = self.loader.loadTexture("Assets/SpaceStation/SpaceStation1_Dif2.png")  # Placeholder texture
+        station_tex = self.loader.loadTexture('Assets/SpaceStation/SpaceStation1_Dif2.png')  # Placeholder texture
         self.SpaceStation.setTexture(station_tex, 1)
         
+        def texture_exists(texPath):
+    
+                return os.path.isfile(texPath)
 
 app = MyApp()
 app.run()
